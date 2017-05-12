@@ -1,0 +1,30 @@
+
+              <div class="city-wrap">
+                <i><svg class="icon icon-place-filled"><use xlink:href="#icon-place-filled"></use></svg></i>
+                <div class="city-inner">
+                  <span class="usercity">Москва</span>
+                  <a href="#"><span class="dashed address-toggle">Изменить город</span><i class="icon-angle-down"><svg class="icon icon-angle"><use xlink:href="#icon-angle"></use></svg></i></a>
+                  <div class="address-dropdown">
+                    <ul>
+                      <li data-city="Москва">Москва</li>
+                      <li data-city="Санкт-Петербург">Санкт-Петербург</li>
+                      <li data-city="Регионы">Регионы</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+
+
+{% comment %}
+ПРИМЕР КОНТЕНТА ЗАВИСЯЩЕГО ОТ ГОРОДА ПОЛЬЗОВАТЕЛЯ
+
+ключевой параметр data-usercity
+
+<div class="phone">
+<a data-usercity="Москва" href="tel:{{account.phone}}">{{account.phone}}</a>
+<a data-usercity="Санкт-Петербург" style="display: none;" href="tel:{{blocks.phone-piter.content | strip_html}}">{{blocks.phone-piter.content | strip_html}}</a>
+<a data-usercity="Регионы" style="display: none;" href="tel:{{blocks.phone-regions.content | strip_html}}">{{blocks.phone-regions.content | strip_html}}</a>
+</div>
+
+{% endcomment %}
