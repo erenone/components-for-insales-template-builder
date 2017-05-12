@@ -1,0 +1,14 @@
+.instagram-feed .swiper-slide {
+  width: 338px;
+}
+.instagram-feed img {
+  display: block;
+}
+.instagram-title {
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: calc(20px + 2.5%) 0;
+}
+.instagram-title a {
+  color: $main-color;
+}
