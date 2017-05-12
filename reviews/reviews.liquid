@@ -1,0 +1,138 @@
+<div id="product-reviews">
+
+       {% if product.reviews_count <= 0 %}
+
+         <div class="notice notice-info padding-bottom">Оставьте первый комментарий!</div>
+
+       {% else %}
+
+         <div class="reviews-list" id="reviews-list">
+
+           {% for review in product.reviews %}
+             <div class="reviews-item padding-bottom">
+
+               <div class="review-header">
+                 <div class="author"><i class="fa fa-user"></i> {{ review.author }}</div>
+                 <div class="date"><i class="fa fa-calendar"></i> {{ review.created_at | date: "%d.%m.%Y %H:%M" }}</div>
+               </div>
+               <div class="review-body">
+                 <p class="text">
+                   {{ review.content | newline_to_br }}
+                 </p>
+               </div>
+               <div class="review-footer">
+                 <div class="star-rating">
+                   {% assign r = 5 %}
+                   {% for i in (1..5) %}
+                     <span class="star-item {% if review.rating == r %}active{% endif %}"></span>
+                     {% assign r = r | minus: 1 %}
+                   {% endfor %}
+                 </div>
+               </div>
+             </div><!-- /.reviews-item -->
+           {% endfor %}
+
+         </div><!-- /.reviews-list -->
+
+       {% endif %}
+
+       <button type="button" data-toggle="collapse" data-target="#review-form" class="button btn review-form-toggle">
+         Оставить отзыв
+       </button>
+
+       {% form review %}
+
+         {% if form.posted_successfully? %}
+
+           {% if account.reviews_moderated? %}
+             <div class="notice notice-success">
+               Отзыв успешно отправлен.<br />
+               Он будет промодерирован владельцем магазина перед публикацией.
+             </div>
+           {% else %}
+             <div class="notice notice-success">Отзыв добавлен.</div>
+           {% endif %}
+
+         {% endif %}
+
+         {% if review.errors.size > 0 %}
+           <div class="notice notice-error">
+             Не все поля заполнены правильно!
+           </div>
+         {% endif %}
+
+         <div id="review-form" class="cell-4 cell-6-lg cell-7-md cell-10-sm cell-12-xs">
+
+             <div class="form-row">
+               <label class="form-label">Имя</label>
+                 <input name="review[author]" value="{{ review.author }}" type="text" />
+                 {% if review.errors contains 'author' %}
+                   <span class="text-error">Вы не представились</span>
+                 {% endif %}
+             </div>
+
+             <div class="form-row">
+               <label class="form-label">Email</label>
+                 <input name="review[email]" value="{{ review.email }}" type="text" />
+                 {% if review.errors contains 'email' %}
+                   <span class="text-error">Неправильно введен e-mail</span>
+                   {% endif %}
+             </div>
+
+             <div class="form-row">
+               <label class="form-label">Сообщение</label>
+                 <textarea name="review[content]">{{ review.content }}</textarea>
+                 {% if review.errors contains 'content' %}
+                   <span class="text-error">Не заполнен текст отзыва</span>
+                 {% endif %}
+             </div>
+
+             {% if review.captcha_enabled? %}
+             <div class="form-row">
+               <label>Капча</label>
+                 <input name="review[captcha_solution]" type="text" />
+                 {% if review.errors contains 'captcha_solution' %}
+                   <span class="text-error captcha-error">Вы неправильно ввели текст с картинки</span>
+                 {% endif %}
+                 <div id="captcha_challenge" class="captcha-image">
+                   {{ review | captcha_challenge }}
+                 </div>
+             </div>
+             {% endif %}
+
+             <div class="form-row rating-row">
+
+                 <div class="star-rating">
+                   <label>Оценка</label>
+                   <span>
+                   {% assign r = 5 %}
+                   {% for i in (1..5) %}
+                     <input name="review[rating]" id="star{{ r }}" type="radio" name="reviewStars" class="star-radio" value="{{ r }}"/>
+                     <label title="{{ r }}" for="star{{ r }}" class="star-label"></label>
+                     {% assign r = r | minus: 1 %}
+                   {% endfor %}
+                   </span>
+                 </div>
+             </div>
+
+             <div class="form-row">
+                 <button type="submit" class="button btn">Отправить</button>
+             </div>
+
+         </div><!-- /.review-form -->
+
+         <p class="text-error">
+           <i class="fa fa-warning"></i>
+           Все поля обязательны к заполнению
+         </p>
+
+         {% if account.reviews_moderated? %}
+           <p class="text-info">
+             <i class="fa fa-warning"></i>
+             Перед публикацией отзывы проходят модерацию
+           </p>
+         {% endif %}
+
+       {% endform %}
+
+     </div><!-- /.product-reviews -->

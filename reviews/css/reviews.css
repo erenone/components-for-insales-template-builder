@@ -1,0 +1,72 @@
+#reviews {
+  padding: 4% 0 2% 0;
+  box-shadow: inset 0 5px 5px rgba(0, 1, 1, 0.1);
+}
+.rating-row {
+  overflow: hidden;
+}
+.form-row input {
+      border: 1px solid #ccc;
+      padding: 0 10px;
+}
+.form-row textarea {
+      border: 1px solid #ccc;
+      padding: 10px;
+}
+.form-row input, .form-row textarea {
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+}
+body .review-form-toggle {
+  background: $color;
+  border: none;
+  height: 30px;
+  line-height: 30px;
+  outline: none;
+
+}
+#review-form {
+  margin-top: 20px;
+}
+.review-form {
+  display: none;
+}
+.is-open .review-form {
+  display: block;
+}
+
+@media (max-width: 1200px) {
+ body .product-info .cell-7 {
+   padding-right: 10px;
+   margin-bottom: 7%;
+ }
+ .product-benefits {
+   flex-wrap: wrap;
+ }
+ .product-benefits .prod-benefit {
+   flex-basis: 50%;
+   max-width: 50%;
+   margin-bottom: 15px;
+ }
+}
+@media (max-width: 768px) {
+ #reviews {
+       padding: 7% 0;
+ }
+}
+
+@media (max-width: 480px) {
+.option-selector, .product-variants {
+  flex-wrap: wrap;
+}
+.option-selector .option {
+  margin-bottom: 10px;
+}
+.product-info .buyzone {
+  display: block;
+}
+.product-info .product-prices {
+  margin-bottom: 15px;
+}
+}
