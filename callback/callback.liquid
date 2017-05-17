@@ -1,0 +1,31 @@
+
+<a data-fancybox data-src="#callback" href="javascript:;">Обратная связь</a>
+
+
+<div id="callback" class="form-popup" style="display:none">
+  <form action="/feedback" method="post" class="js-callback-form">
+    <input type="hidden" name="subject" value="Клиент просит перезвонить ему" />
+  <div class="page-header">
+    <h1>Обратный звонок</h1>
+  </div>
+    <div class="form-section">
+    <div class="form-row">
+      <label for="name">Имя</label>
+      <input type="text" class="textfield" name="name" />
+    </div>
+    <div class="form-row required hide">
+      <label for="from">Email</label>
+      <input type="text" class="textfield" name="from" value="{{account.email}}" />
+    </div>
+    <div class="form-row required">
+      <label for="phone">Перезвоните мне на номер</label>
+      <input type="text" class="textfield" class="js-phone" name="phone" />
+    </div>
+    <div class="form-row hide">
+      <label for="content">Сообщение</label>
+      <textarea class="textfield" name="content">Сообщение отправлено с сайта {{account.url}}</textarea>
+    </div>
+    <button type="submit" class="button">Отправить</button>
+  </div>
+  </form>
+</div>

@@ -1,0 +1,49 @@
+.form-row {
+  margin-bottom: 10px;
+}
+.form-row .textfield {
+ width: 100%;
+ line-height: 30px;
+ padding: 0 5px;
+ font-family: inherit;
+ font-size: 15px;
+ -webkit-appearance: none;
+   -moz-appearance:    none;
+   appearance:        none;
+   border-radius: 0;
+   background: #fff;
+   border: 1px solid $border;
+   font-weight: 300;
+}
+.form-row input.textfield {
+  height: 30px;
+}
+.form-row textarea {
+ height: 100px;
+ font-weight: 300;
+}
+.form-row label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-popup {
+  min-width: 300px;
+  width: 90%;
+  max-width: 400px;
+}
+.form-row.required label:after {
+  content: '*';
+  color: #fd2f2f;
+  display: inline-block;
+}
+input.is-error {
+  border-color:red!important;
+
+}
+.is-error {
+  color: red!important;
+}
+.ajs-message {
+  color: #fff;
+  border: 2px solid #fff;
+}
