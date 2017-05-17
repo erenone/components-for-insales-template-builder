@@ -1,4 +1,5 @@
 $(function(){
+ if ($('#instafeed').length > 0) {
   var feed = new Instafeed({
    get: 'user',
    userId: '302944152',
@@ -16,5 +17,5 @@ $(function(){
    }
    });
    feed.run();
-
+ }
 });
