@@ -1,0 +1,34 @@
+<div class="photo-slider-wrapper">
+  <div class="photo-slider swiper-container js-photo-slider">
+    <div class="swiper-wrapper">
+      {% for image in product.images %}
+      <div class="swiper-slide photo-slide">
+        <a href="{{image.original_url}}"><img src="{{image.large_url}}" alt="{{image.title | escape}}" /></a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% if product.images.size > 1 %}
+<div class="gallery">
+  <div class="gallery-slider-wrapper">
+    <div class="gallery-slider swiper-container js-gallery-slider">
+      <div class="swiper-wrapper">
+        {% for image in product.images %}
+        <div class="swiper-slide gallery-slide">
+          <a href="{{image.original_url}}"><img src="{{image.large_url}}" alt="{{image.title | escape}}" /></a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="gallery-control swiper-control">
+      <div class="swiper-button-prev gallery-control-prev">
+        <i class="icon icon-angle"></i>
+      </div>
+      <div class="swiper-button-next gallery-control-next">
+        <i class="icon icon-angle"></i>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
