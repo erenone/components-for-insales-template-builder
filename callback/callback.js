@@ -60,7 +60,7 @@ $callbackForm.validate({
       $callbackForm.serializeObject()
       )
       .done(function (response) {
-        alertify.set('notifier','delay', 10000000);
+        alertify.set('notifier','delay', 1000);
         alertify.success(response.notice);
         $callbackForm.trigger('reset');
         $.fancybox.close();
