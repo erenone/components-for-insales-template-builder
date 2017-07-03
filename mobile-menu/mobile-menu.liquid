@@ -1,0 +1,8 @@
+<div class="mobile-menu">
+  <button class="close js-mobile-menu-toggle"><i class="icon icon-times"></i></button>
+  {% include "menu", menu_class: 'main-menu clear-list', source_type: 'collection', source_handle: 'all', show_icon: false, level_limit: 2 %}
+  <div class="hide show-lg">
+    {% include "menu", menu_class: 'top-links clear-list', source_type: 'links', source_handle: 'main-menu', show_icon: false, level_limit: 1 %}
+  </div>
+  </div>
+<div class="opaco js-mobile-menu-toggle"></div>
